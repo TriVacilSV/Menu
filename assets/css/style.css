@@ -1,63 +1,85 @@
+/* Configuración Base */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #000;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
+    width: 100%;
+    /* Si tienes una imagen, cámbiala aquí. Si no, usa el color #050505 */
+    background: url('../img/fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    position: relative;
 }
 
-/* Recuadro elegante */
-.card {
-    background-color: rgba(20, 20, 20, 0.8); /* Fondo oscuro semitransparente */
-    padding: 50px;
-    border-radius: 15px;
-    border: 1px solid #d4af37; /* Borde dorado */
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); /* Sombra dorada sutil */
-    text-align: center;
-    max-width: 400px;
-}
-
-.logo {
-    width: 250px; /* Tamaño del logo ajustado */
-    margin-bottom: 30px;
-    /* Quitamos el borde circular y el border-radius */
-}
-
-.btn-menu {
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    color: #000;
-    background-color: #d4af37; /* Color dorado */
-    text-decoration: none;
-    border-radius: 5px; /* Bordes menos redondeados para elegancia */
-    font-weight: bold;
-    transition: 0.3s;
-    display: inline-block;
-}
-
-.btn-menu:hover {
-    background-color: #fff;
-    transform: scale(1.05);
-}
-
-.stars {
+/* Efecto estelar a pantalla completa */
+.stars-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
-    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png');
-    animation: moveStars 20s linear infinite;
-    pointer-events: none; /* Para que no interfiera con el clic */
+    z-index: 0;
+    pointer-events: none;
+    
+    /* Usamos 'repeat' para que los puntos cubran todo el área */
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 1.5px, transparent 2px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 1px);
+    
+    /* El tamaño es fijo para que se repita como una baldosa en toda la pantalla */
+    background-size: 200px 200px, 150px 150px;
+    background-position: 0 0, 40px 60px;
+    
+    animation: moveConstellations 60s linear infinite;
 }
 
-@keyframes moveStars {
-    from { background-position: 0 0; }
-    to { background-position: 1000px 1000px; }
+@keyframes moveConstellations {
+    from { background-position: 0 0, 40px 60px; }
+    to { background-position: 200px 200px, 190px 210px; }
+}
+
+/* El resto de tu diseño se mantiene igual */
+.card {
+    position: relative;
+    z-index: 1;
+    background: rgba(10, 10, 20, 0.7);
+    padding: 50px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 320px;
+    backdrop-filter: blur(10px);
+}
+
+.logo { 
+    width: 220px; 
+    margin-bottom: 40px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.btn-menu {
+    display: inline-block;
+    padding: 18px 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #00ffff;
+    background: transparent;
+    border: 2px solid #ff00ff;
+    border-radius: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-menu:hover {
+    background: rgba(255, 0, 255, 0.2);
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.7);
 }
